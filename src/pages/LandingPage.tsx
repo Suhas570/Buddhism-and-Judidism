@@ -6,7 +6,7 @@ import { useRole, type AuthUser, type Role } from "../context/RoleContext";
 type SignupErrors = Record<string, string[] | undefined>;
 type AuthMode = "login" | "signup" | "forgot";
 
-// ─── Demo Credentials stored in localStorage on login ──────────────────────
+// Demo Credentials stored in localStorage on login
 const DEMO_CREDENTIALS: Record<
   Exclude<Role, null>,
   { email: string; password: string; name: string; communityType: "buddhism" | "judaism" }
@@ -113,7 +113,6 @@ function PortalCard({
         role,
         communityType: creds.communityType,
       };
-      // setSession saves token + user to localStorage automatically
       setSession("demo-token-" + role, user);
       navigate(route);
     } else {
@@ -126,23 +125,22 @@ function PortalCard({
   return (
     <form
       onSubmit={handleSubmit}
-      className={elative rounded-3xl p-8 flex flex-col gap-5 transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5 }
+      className={`relative rounded-3xl p-8 flex flex-col gap-5 transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5 ${cardStyle}`}
     >
       <div className="flex items-start justify-between">
-        <div className={w-12 h-12 rounded-2xl flex items-center justify-center }>
+        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${iconBg}`}>
           <Icon size={22} className={iconColor} />
         </div>
-        <span className={inline-flex items-center rounded-full text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 border }>
+        <span className={`inline-flex items-center rounded-full text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 border ${badgeStyle}`}>
           {badge}
         </span>
       </div>
       <div className="flex flex-col gap-2">
-        <h2 className={ont-display font-bold text-xl tracking-tight }>{title}</h2>
-        <p className={	ext-sm leading-relaxed }>{description}</p>
+        <h2 className={`font-display font-bold text-xl tracking-tight ${titleStyle}`}>{title}</h2>
+        <p className={`text-sm leading-relaxed ${descStyle}`}>{description}</p>
       </div>
 
-      {/* Credential hint box */}
-      <div className={ounded-xl px-3 py-2 text-xs space-y-0.5 border }>
+      <div className={`rounded-xl px-3 py-2 text-xs space-y-0.5 border ${hintStyle}`}>
         <p><span className="font-semibold">Email:</span> {creds.email}</p>
         <p><span className="font-semibold">Password:</span> {creds.password}</p>
       </div>
@@ -170,7 +168,7 @@ function PortalCard({
       <button
         type="submit"
         disabled={loading}
-        className={mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:gap-3 cursor-pointer disabled:opacity-60 }
+        className={`mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:gap-3 cursor-pointer disabled:opacity-60 ${buttonStyle}`}
       >
         {loading ? "Signing in..." : buttonLabel}
         <ArrowRight size={15} />
@@ -203,13 +201,12 @@ function SignupPanel({ onDone }: { onDone: () => void }) {
 
     const user: AuthUser = {
       id: "user-" + Date.now(),
-      name: ${form.firstName} ,
+      name: `${form.firstName} ${form.lastName}`,
       email: form.email,
       role: "user",
       communityType: form.communityType,
     };
 
-    // Saves to localStorage via setSession
     setSession("demo-token-user", user);
     navigate("/user");
     onDone();
@@ -250,7 +247,11 @@ function SignupPanel({ onDone }: { onDone: () => void }) {
               type="button"
               key={opt.value}
               onClick={() => setForm({ ...form, communityType: opt.value as typeof form.communityType })}
-              className={ounded-xl border px-4 py-3 text-sm font-semibold transition-colors }
+              className={`rounded-xl border px-4 py-3 text-sm font-semibold transition-colors ${
+                form.communityType === opt.value
+                  ? "border-[#E8A33D] bg-[#FDF4E7] text-[#2B2420]"
+                  : "border-[#F1E9DA] text-[#8A7F6E] hover:border-[#E8A33D]"
+              }`}
             >
               {opt.label}
             </button>
@@ -274,7 +275,7 @@ function PasswordPanel({ initialEmail, onMode }: { initialEmail: string; onMode:
       (c) => c.email === email.trim().toLowerCase()
     );
     if (match) {
-      setMessage(Password for : );
+      setMessage(`Password for ${email}: ${match.password}`);
     } else {
       setMessage("No account found with that email.");
     }
@@ -320,7 +321,6 @@ export function LandingPage() {
 
   return (
     <div className="min-h-screen bg-[#FAF6EF] flex flex-col">
-      {/* Header */}
       <div className="flex items-center justify-center pt-10 pb-2">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-[#1C1815] flex items-center justify-center text-[#E8A33D]">
@@ -332,7 +332,6 @@ export function LandingPage() {
         </div>
       </div>
 
-      {/* Mode Switcher */}
       <div className="flex flex-col items-center text-center px-6 pt-10 pb-8">
         <h1 className="font-display font-bold text-4xl md:text-6xl text-[#2B2420] tracking-tight leading-tight max-w-2xl">
           {isLogin ? "Sign in" : mode === "signup" ? "Create member account" : "Password help"}
@@ -343,26 +342,25 @@ export function LandingPage() {
         <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
           <button
             onClick={() => setMode("login")}
-            className={px-4 py-2 rounded-full text-sm font-semibold }
+            className={`px-4 py-2 rounded-full text-sm font-semibold ${mode === "login" ? "bg-[#2B2420] text-white" : "bg-white text-[#8A7F6E] border border-[#F1E9DA]"}`}
           >
             Sign in
           </button>
           <button
             onClick={() => setMode("signup")}
-            className={px-4 py-2 rounded-full text-sm font-semibold }
+            className={`px-4 py-2 rounded-full text-sm font-semibold ${mode === "signup" ? "bg-[#E8A33D] text-[#1C1815]" : "bg-white text-[#8A7F6E] border border-[#F1E9DA]"}`}
           >
             Create account
           </button>
           <button
             onClick={() => { setResetEmail(""); setMode("forgot"); }}
-            className={px-4 py-2 rounded-full text-sm font-semibold }
+            className={`px-4 py-2 rounded-full text-sm font-semibold ${mode === "forgot" ? "bg-[#FDF4E7] text-[#2B2420] border border-[#E8A33D]" : "bg-white text-[#8A7F6E] border border-[#F1E9DA]"}`}
           >
             Password help
           </button>
         </div>
       </div>
 
-      {/* Panels */}
       <div className="flex-1 flex items-start justify-center px-6 pb-16">
         {mode === "signup" && <SignupPanel onDone={() => setMode("login")} />}
         {mode === "forgot" && <PasswordPanel initialEmail={resetEmail} onMode={setMode} />}
