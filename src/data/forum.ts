@@ -1,0 +1,52 @@
+export const forumPosts = [
+  {
+    id: 1,
+    author: "Arjun Sharma",
+    title: "Dealing with restlessness during sitting meditation",
+    preview: "I've been sitting for about 6 months now and still find myself getting restless after the 20-minute mark. Any advice from experienced practitioners?",
+    likes: 14,
+    replies: 8,
+    category: "Q&A",
+    date: "2024-03-09",
+    status: "approved",
+  },
+  {
+    id: 2,
+    author: "Priya Nair",
+    title: "Reflections on the Heart Sutra Commentary session",
+    preview: "Last week's dharma talk really opened my eyes to the concept of emptiness. I wanted to share a few insights and hear what others took away.",
+    likes: 22,
+    replies: 15,
+    category: "Discussion",
+    date: "2024-03-07",
+    status: "approved",
+  },
+  {
+    id: 3,
+    author: "Thomas Walsh",
+    title: "Study group for Vipassana Foundations course?",
+    preview: "Looking to connect with others going through the Vipassana Foundations course. Would anyone be interested in forming a weekly discussion group?",
+    likes: 9,
+    replies: 4,
+    category: "Study Group",
+    date: "2024-03-05",
+    status: "pending",
+  },
+  {
+    id: 4,
+    author: "Elena Morozova",
+    title: "My 30-day metta practice journal",
+    preview: "I committed to 30 days of metta meditation in February. Here's what I noticed each week and how it changed my relationships.",
+    likes: 31,
+    replies: 12,
+    category: "Practice Sharing",
+    date: "2024-03-01",
+    status: "approved",
+  },
+];
+
+export const studyGroups = [
+  { id: 1, name: "Vipassana Foundations Study Circle", members: 8, nextMeeting: "2024-04-10", facilitator: "David Chen" },
+  { id: 2, name: "Pali Chanting Group", members: 12, nextMeeting: "2024-04-07", facilitator: "Sunita Rao" },
+  { id: 3, name: "Metta Practice Partners", members: 6, nextMeeting: "2024-04-14", facilitator: "Arjun Sharma" },
+];

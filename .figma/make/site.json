@@ -1,0 +1,10 @@
+{
+  "description": "Streamline your design workflow by converting Figma prompts into fully functional web applications, enhancing productivity and creativity effortlessly.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #FAF6EF;
+  --color-surface: #FFFFFF;
+  --color-dark-surface: #1C1815;
+  --color-dark-surface-2: #26201A;
+  --color-card-border: #F1E9DA;
+  --color-primary: #E8A33D;
+  --color-primary-dark: #C98A28;
+  --color-secondary: #7A2E2E;
+  --color-accent: #C9A227;
+  --color-text-primary: #2B2420;
+  --color-text-inverse: #F5EFE3;
+  --color-text-muted: #8A7F6E;
+  --color-success: #6B8E5A;
+  --color-warning: #D98E3C;
+  --color-danger: #B94A3F;
+  --color-saffron-tint: #FDF4E7;
+  --font-display: 'General Sans', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #FAF6EF;
+  color: #2B2420;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Hide scrollbar but allow scrolling */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4C8B5;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8A98C;
+}

@@ -1,0 +1,32 @@
+export const centers = [
+  {
+    id: 1,
+    name: "Bodhi Grove Sangha",
+    location: "San Francisco, CA",
+    headMonk: "Bhante Sujato",
+    memberCount: 148,
+    adminCount: 3,
+    status: "active",
+    founded: "2015",
+  },
+  {
+    id: 2,
+    name: "Lotus Path Meditation Center",
+    location: "Portland, OR",
+    headMonk: "Bhikkhu Analayo",
+    memberCount: 94,
+    adminCount: 2,
+    status: "active",
+    founded: "2018",
+  },
+  {
+    id: 3,
+    name: "Serene Mountain Vihara",
+    location: "Boulder, CO",
+    headMonk: "Ajahn Brahm",
+    memberCount: 67,
+    adminCount: 2,
+    status: "active",
+    founded: "2020",
+  },
+];
